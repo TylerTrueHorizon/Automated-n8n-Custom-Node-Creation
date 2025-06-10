@@ -1,0 +1,27 @@
+import { IExecuteFunctions } from "n8n-core";
+import { INodeExecutionData, INodeType, INodeTypeDescription } from "n8n-workflow";
+
+export class {{nodeName}} implements INodeType {
+    description: INodeTypeDescription = {
+        displayName: "{{nodeName}}",
+        name: "{{nodeName}}",
+        group: ['transform'],
+        version: 1,
+        description: 'Auto-generated node',
+        defaults: {
+            name: "{{nodeName}}",
+        },
+        inputs: ['main'],
+        outputs: ['main'],
+        credentials: [],
+        properties: [],
+    };
+
+    async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
+        const response = await this.helpers.request({
+            method: '{{method}}',
+            url: `{{{path}}}`,
+        });
+        return [this.helpers.returnJsonArray(response)];
+    }
+}
