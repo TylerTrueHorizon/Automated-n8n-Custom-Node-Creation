@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const { generateNode } = require('./generator');
 const Mustache = require('mustache');
 
 async function main() {
@@ -21,7 +22,8 @@ async function main() {
   }
   const [method, operation] = methodEntry;
   const nodeName = (operation.operationId || 'CustomNode').replace(/\s+/g, '');
-
+  const outPath = await generateNode(spec, path, method, nodeName);
+  console.log(`Node generated: ${outPath}`);
   const template = await fs.readFile('src/templates/node.mustache', 'utf8');
   const rendered = Mustache.render(template, { nodeName, method: method.toUpperCase(), path });
 
