@@ -1,8 +1,8 @@
 # Automated n8n Custom Node Creation
 
-This project provides a simple CLI tool that generates a minimal n8n community node from an OpenAPI specification. The goal is to automate boilerplate creation so you can quickly publish or install custom nodes.
+This project provides tools to generate a minimal n8n community node from an OpenAPI specification. A CLI tool and a small web UI are included to help create and preview nodes.
 
-## Usage
+## CLI Usage
 
 1. Install dependencies:
 
@@ -18,11 +18,23 @@ node src/generate.js path/to/openapi.json
 
 The script reads the first path and method from the specification and produces a TypeScript node under the `generated/` folder.
 
-3. Compile and publish the node following [n8n's guide](https://docs.n8n.io/hosting/custom-nodes/create-community-nodes/). After publishing to npm, the package can be installed on any n8n instance.
+## Web UI
+
+A basic Express server serves a single-page interface to test node generation interactively.
+
+```bash
+npm start
+```
+
+Then open `http://localhost:3000` in your browser. Paste an OpenAPI spec, choose a path and method, provide a node name and click **Generate** to preview the generated code.
+
+## Publishing
+
+Compile and publish the generated node following [n8n's guide](https://docs.n8n.io/hosting/custom-nodes/create-community-nodes/). After publishing to npm, the package can be installed on any n8n instance.
 
 ## Example
 
-```
+```bash
 node src/generate.js example-spec.json
 ```
 

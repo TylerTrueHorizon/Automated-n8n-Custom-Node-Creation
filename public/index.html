@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>n8n Node Generator</title>
+</head>
+<body>
+  <h1>n8n Node Generator</h1>
+  <textarea id="spec" rows="10" cols="80" placeholder="Paste OpenAPI JSON here"></textarea><br/>
+  <button id="load">Load Spec</button>
+  <div id="options" style="display:none;">
+    <label>Path:
+      <select id="pathSelect"></select>
+    </label>
+    <label>Method:
+      <select id="methodSelect"></select>
+    </label>
+    <label>Node Name:
+      <input id="nodeName"/>
+    </label>
+    <button id="generate">Generate</button>
+  </div>
+  <pre id="output"></pre>
+<script src="script.js"></script>
+</body>
+</html>
